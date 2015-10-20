@@ -1,0 +1,8 @@
+<layout id="MainLayout">
+    <label x="center" y="center" text="PRESS START"
+    	color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER"
+    	id="StartLabel" font="Gfx.FONT_MEDIUM" />
+    <label
+    	x="center" y="0" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" font="Gfx.FONT_NUMBER_MILD" id="TimeLabel">
+</label>
+</layout>
