@@ -51,8 +51,14 @@ class TimerView extends BaseView {
 			Attention.vibrate(startVibrate);
 			Attention.playTone(Attention.TONE_ALARM);
 		} else if(!up) {
-			if((!inOffset && (seconds % 60) == 0) || (mode == MODE_PURSUIT && (pursuitSeconds() % 60) == 0)) { // pulse on minute
-				Attention.playTone(Attention.TONE_ALARM);
+			var isMainMinute = !inOffset && (seconds % 60) == 0;
+			if(isMainMinute || (mode == MODE_PURSUIT && (pursuitSeconds() % 60) == 0)) { // pulse on minute
+				if(isMainMinute) {
+					var min = seconds / 60;
+					if(min == 5 || min == 4 || min == 1) {
+						Attention.playTone(Attention.TONE_ALARM);
+					}
+				}
 				Attention.vibrate(signalVibrate);
 			} else if((mode == MODE_PURSUIT && pursuitSeconds() <= 10) ||
     				(mode != MODE_PURSUIT && seconds <= 10)) { // pulse before start
