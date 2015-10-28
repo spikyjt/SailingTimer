@@ -2,11 +2,14 @@
     <iq:application entry="SailingTimerApp" id="C418FBCDC77A4C15A975921E9DCE2904" launcherIcon="LauncherIcon" name="AppName" type="watch-app">
 
         <iq:products>
+            <iq:product id="vivoactive"/>
             <iq:product id="fenix3"/>
+            <iq:product id="d2bravo"/>
+            <iq:product id="fr920xt"/>
+            <iq:product id="epix"/>
         </iq:products>
 
-        <iq:permissions>
-        </iq:permissions>
+        <iq:permissions/>
 
         <iq:languages>
             <iq:language>eng</iq:language>

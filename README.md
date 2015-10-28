@@ -15,7 +15,9 @@ The timer can be synchronised to the nearest minute, up or down.
 
 ### Compatibility
 
-Currently only supports the Fênix 3 as that's the device I own.
+In theory, supports Fênix 3, D2 Bravo, Forerunner 920XT, Epix and Vivoactive.
+
+Only tested on real hardware on the Fênix 3 as that's the device I own. Other devices tested on the simulator.
 
 ## LICENCE
 
