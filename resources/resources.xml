@@ -2,4 +2,21 @@
     <string id="AppName">Sailing Timer</string>
 
     <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
+    
+    <menu id="TimerOptions" title="Choose Mode">
+    	<menu-item id="timer_option_standard">Standard</menu-item>
+    	<menu-item id="timer_option_pursuit">Pursuit...</menu-item>
+	</menu>
+    
+    <menu id="PursuitOptions" title="Choose Start">
+    	<menu-item id="pursuit_option_custom">Custom...</menu-item>
+    	<menu-item id="pursuit_option_30">0:30</menu-item>
+    	<menu-item id="pursuit_option_60">1:00</menu-item>
+    	<menu-item id="pursuit_option_90">1:30</menu-item>
+    	<menu-item id="pursuit_option_120">2:00</menu-item>
+    	<menu-item id="pursuit_option_150">2:30</menu-item>
+    	<menu-item id="pursuit_option_180">3:00</menu-item>
+    	<menu-item id="pursuit_option_210">3:30</menu-item>
+    	<menu-item id="pursuit_option_240">4:00</menu-item>
+	</menu>
 </resources>

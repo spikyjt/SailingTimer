@@ -1,4 +1,4 @@
-<layout id="TimerLayout">
+<layout id="OffsetTimerLayout">
 	<label
 		x="center"
 		y="0"
@@ -9,10 +9,18 @@
 	/>
     <label
 		x="center"
-		y="center"
+		y="25"
+    	color="Gfx.COLOR_WHITE"
+		justification="Gfx.TEXT_JUSTIFY_CENTER"
+		font="Gfx.FONT_NUMBER_HOT"
+    	id="TimerLabel"
+	/>
+	<label
+		x="center"
+		y="90"
     	color="Gfx.COLOR_WHITE"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_THAI_HOT"
-    	id="TimerLabel"
+    	id="OffsetTimerLabel"
 	/>
 </layout>

@@ -2,33 +2,35 @@ using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 using Toybox.Lang as Lang;
 using Toybox.Timer as Timer;
+using Toybox.Graphics as Gfx;
 
-class InitView extends Ui.View {
+class InitView extends BaseView {
 
 	hidden var timer;
-    //! Load your resources here
+
     function onLayout(dc) {
-        setLayout(Rez.Layouts.MainLayout(dc));
+        setLayout(Rez.Layouts.InitLayout(dc));
     }
 
     //! Called when this View is brought to the foreground. Restore
     //! the state of this View and prepare it to be shown. This includes
     //! loading resources into memory.
     function onShow() {
+    	timerView = new TimerView();
     	timer = new Timer.Timer();
     	timer.start(method(:updateTime), 1000, true);
-    }
-
-    //! Update the view
-    function onUpdate(dc) {
-     	// Get and show the current time
-        var clockTime = Sys.getClockTime();
-        var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%.2d")]);
-        var view = View.findDrawableById("TimeLabel");
-        view.setText(timeString);
-
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
+    	var modeLabel = View.findDrawableById("ModeLabel");
+    	var offsetLabel = View.findDrawableById("OffsetTimerLabel");
+    	if(mode == MODE_PURSUIT) {
+    		modeLabel.setText("Pursuit");
+    		modeLabel.setColor(Gfx.COLOR_RED);
+    		offsetLabel.setText(timerView.timerString(true));
+    	} else {
+    		modeLabel.setText("Standard");
+    		modeLabel.setColor(Gfx.COLOR_BLUE);
+    		offsetLabel.setText("");
+    	}
+    	Ui.requestUpdate();
     }
 
     function updateTime() {
@@ -42,14 +44,27 @@ class InitView extends Ui.View {
     	timer.stop();
     }
 
+    function goPursuit() {
+    	var modeLabel = View.findDrawableById("ModeLabel");
+    	var offsetLabel = View.findDrawableById("OffsetTimerLabel");
+		modeLabel.setText("Pursuit");
+		modeLabel.setColor(Gfx.COLOR_RED);
+		offsetLabel.setText(timerView.timerString(true));
+    	Ui.requestUpdate();
+    }
+
 }
 
 class InitDelegate extends STBehaviorDelegate {
 
 	function onEnter() {
-		timerView = new TimerView();
 		Ui.pushView(timerView, new TimerDelegate(), Ui.SLIDE_UP);
         return true;
+	}
+
+	function onMenu() {
+		mode = MODE_STANDARD;
+		Ui.pushView(new Rez.Menus.TimerOptions(), new TimerOptionsDelegate(), Ui.SLIDE_UP);
 	}
 
 }
