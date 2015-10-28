@@ -8,7 +8,16 @@ At the start emits an alarm, vibrates and then times up for the race duration.
 
 The timer can be synchronised to the nearest minute, up or down.
 
-Currently only supports the Fênix 3 as thats the device I own.
+### Modes
+
+- Standard mode: starts at 5 minutes.
+- Pursuit mode: allows offset to be configured. Main timer shows 5 minute sequence, offset timer shows your start.
+
+### Compatibility
+
+Currently only supports the Fênix 3 as that's the device I own.
+
+## LICENCE
 
 Licence MIT
 
