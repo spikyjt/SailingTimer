@@ -14,14 +14,15 @@ class TimerView extends BaseView {
 
 	hidden var timer;
 	hidden var timeTimer;
-	hidden var center = new [2];
+	hidden var center = new [3];
 	hidden var signalVibrate = [ new Attention.VibeProfile(50, 500) ];
     hidden var countdownVibrate = [ new Attention.VibeProfile(50, 300) ];
     hidden var startVibrate = [ new Attention.VibeProfile(50, 1000) ];
 
     function onLayout(dc) {
     	center[0] = dc.getWidth() / 2;
-    	center[1] = (dc.getHeight() - dc.getFontHeight(Gfx.FONT_NUMBER_THAI_HOT)) / 2;
+    	center[1] = dc.getHeight() / 2;
+    	center[2] = center[1] - (dc.getFontHeight(Gfx.FONT_NUMBER_THAI_HOT) / 2);
     	if(mode == MODE_PURSUIT) {
     		setLayout(Rez.Layouts.OffsetTimerLayout(dc));
     		View.findDrawableById("TimerLabel").setColor(Gfx.COLOR_BLUE);
@@ -46,6 +47,10 @@ class TimerView extends BaseView {
     function onUpdate(dc) {
         // show the timer time
     	timerDisplay();
+    	// draw the arc
+		var theta = ((seconds % 60) / 60f) * 2 * Math.PI;
+		Sys.println(theta);
+
 		// vibrate
 		if(seconds == 0 || (mode == MODE_PURSUIT && pursuitSeconds() == 0)) { // pulse at start
 			Attention.vibrate(startVibrate);
@@ -68,6 +73,7 @@ class TimerView extends BaseView {
         } else if(seconds < 5 && !inOffset) {
         	Attention.playTone(Attention.TONE_ALARM);
         }
+        drawArc(dc, center[0], center[1], center[0] - 10, theta, Gfx.COLOR_GREEN);
 		// call the parent to update the time and display
         BaseView.onUpdate(dc);
     }
@@ -88,7 +94,7 @@ class TimerView extends BaseView {
 		if(seconds == 0) {
 			if(mode == MODE_PURSUIT) {
 				inOffset = true;
-				View.findDrawableById("OffsetTimerLabel").setLocation(center[0], center[1]);
+				View.findDrawableById("OffsetTimerLabel").setLocation(center[0], center[2]);
     			View.findDrawableById("TimerLabel").setText("");
     		} else {
 				up = true;
