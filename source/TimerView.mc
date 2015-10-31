@@ -15,9 +15,37 @@ class TimerView extends BaseView {
 	hidden var timer;
 	hidden var timeTimer;
 	hidden var center = new [2];
-	hidden var signalVibrate = [ new Attention.VibeProfile(50, 500) ];
-    hidden var countdownVibrate = [ new Attention.VibeProfile(50, 300) ];
-    hidden var startVibrate = [ new Attention.VibeProfile(50, 1000) ];
+
+	hidden var vibes = false;
+    hidden var tones = false;
+
+    const STATE_MINUTE = 0;
+    const STATE_SIGNAL = 1;
+    const STATE_COUNTDOWN = 2;
+    const STATE_START = 3;
+    const STATE_STARTED = 4;
+
+    function initialize() {
+    	if(Attention has :VibeProfile && vibes == false) {
+    		vibes = [
+    			[ new Attention.VibeProfile(30, 300) ], // STATE_MINUTE
+    			[ new Attention.VibeProfile(50, 500) ], // STATE_SIGNAL
+    			[ new Attention.VibeProfile(50, 300) ], // STATE_COUNTDOWN
+    			[ new Attention.VibeProfile(50, 1000) ], // STATE_START
+				false // STATE_STARTED
+    		];
+    	}
+
+    	if(Attention has :playTone) {
+    		tones = [
+    			false, // STATE_MINUTE
+    			Attention.TONE_ALARM, // STATE_SIGNAL
+    			Attention.TONE_LOUD_BEEP, // STATE_COUNTDOWN
+    			Attention.TONE_ALARM, // STATE_START
+				Attention.TONE_ALARM // STATE_STARTED
+    		];
+    	}
+    }
 
     function onLayout(dc) {
     	center[0] = dc.getWidth() / 2;
@@ -48,25 +76,25 @@ class TimerView extends BaseView {
     	timerDisplay();
 		// vibrate
 		if(seconds == 0 || (mode == MODE_PURSUIT && pursuitSeconds() == 0)) { // pulse at start
-			Attention.vibrate(startVibrate);
-			Attention.playTone(Attention.TONE_ALARM);
+			notify(STATE_START);
 		} else if(!up) {
 			var isMainMinute = !inOffset && (seconds % 60) == 0;
 			if(isMainMinute || (mode == MODE_PURSUIT && (pursuitSeconds() % 60) == 0)) { // pulse on minute
+				var isSignalMinute = false;
 				if(isMainMinute) {
 					var min = seconds / 60;
-					if(min == 5 || min == 4 || min == 1) {
-						Attention.playTone(Attention.TONE_ALARM);
+					if(min == 5 || min == 4 || min == 1) { // tone on signal
+						isSignalMinute = true;
 					}
 				}
-				Attention.vibrate(signalVibrate);
+
+				notify(isSignalMinute ? STATE_SIGNAL : STATE_MINUTE);
 			} else if((mode == MODE_PURSUIT && pursuitSeconds() <= 10) ||
-    				(mode != MODE_PURSUIT && seconds <= 10)) { // pulse before start
-	        	Attention.playTone(Attention.TONE_LOUD_BEEP);
-				Attention.vibrate(countdownVibrate);
+    				(mode != MODE_PURSUIT && seconds <= 10)) { // pulse before start (countdown)
+	        	notify(STATE_COUNTDOWN);
 			}
         } else if(seconds < 5 && !inOffset) {
-        	Attention.playTone(Attention.TONE_ALARM);
+        	notify(STATE_STARTED);
         }
 		// call the parent to update the time and display
         BaseView.onUpdate(dc);
@@ -169,6 +197,16 @@ class TimerView extends BaseView {
 
 	function pursuitSeconds() {
 		return seconds + pursuitOffset;
+	}
+
+	function notify(state) {
+		if(vibes != false && vibes[state] != false) {
+			Attention.vibrate(vibes[state]);
+		}
+
+		if(tones != false && tones[state] != false) {
+			Attention.playTone(tones[state]);
+		}
 	}
 
 }
