@@ -159,9 +159,9 @@ class TimerView extends BaseView {
     	if(up) {
     		var hour = min / 60;
     		var realMin = min % 60;
- 		   	timerString = Lang.format("$1$:$2$:$3$", [hour, realMin.format("%.2d"), sec.format("%.2d")]);
+ 		   	timerString = Lang.format(FORMAT_UP_TIME, [hour, realMin.format(FORMAT_MIN_SEC), sec.format(FORMAT_MIN_SEC)]);
     	} else {
- 		   	timerString = Lang.format("$1$:$2$", [min, sec.format("%.2d")]);
+ 		   	timerString = Lang.format(FORMAT_TIME, [min, sec.format(FORMAT_MIN_SEC)]);
  		}
 
  		return timerString;
