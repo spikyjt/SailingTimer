@@ -8,6 +8,10 @@ class InitView extends BaseView {
 
 	hidden var timer;
 
+	function initialize() {
+		BaseView.initialize();
+	}
+
     function onLayout(dc) {
         setLayout(Rez.Layouts.InitLayout(dc));
     }

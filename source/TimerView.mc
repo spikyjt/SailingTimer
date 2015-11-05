@@ -26,6 +26,8 @@ class TimerView extends BaseView {
     const STATE_STARTED = 4;
 
     function initialize() {
+    	BaseView.initialize();
+
     	if(Attention has :VibeProfile && vibes == false) {
     		vibes = [
     			[ new Attention.VibeProfile(30, 300) ], // STATE_MINUTE
@@ -161,7 +163,7 @@ class TimerView extends BaseView {
     		var realMin = min % 60;
  		   	timerString = Lang.format(FORMAT_UP_TIME, [hour, realMin.format(FORMAT_MIN_SEC), sec.format(FORMAT_MIN_SEC)]);
     	} else {
- 		   	timerString = Lang.format(FORMAT_TIME, [min, sec.format(FORMAT_MIN_SEC)]);
+ 		   	timerString = Lang.format(FORMAT_TIMER, [min, sec.format(FORMAT_MIN_SEC)]);
  		}
 
  		return timerString;
