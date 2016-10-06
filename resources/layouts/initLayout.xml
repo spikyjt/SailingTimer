@@ -4,7 +4,7 @@
 		x="center"
 		y="0"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
-		font="Gfx.FONT_NUMBER_MILD"
+		font="Gfx.FONT_SMALL"
 		color="Gfx.COLOR_WHITE"
 	/>
 	<label

@@ -38,7 +38,7 @@ class TimerView extends BaseView {
     		];
     	}
 
-    	if(Attention has :playTone) {
+    	if(Attention has :playTone && tones == false) {
     		tones = [
     			false, // STATE_MINUTE
     			Attention.TONE_ALARM, // STATE_SIGNAL
@@ -139,11 +139,11 @@ class TimerView extends BaseView {
     function timerDisplay() {
  		if(mode == MODE_PURSUIT) {
  			if(!up && seconds >= 0) {
- 				View.findDrawableById("TimerLabel").setText(timerString());
+ 				View.findDrawableById("TimerLabel").setText(timerString(false));
  			}
  			View.findDrawableById("OffsetTimerLabel").setText(timerString(!up));
  		} else {
- 			View.findDrawableById("TimerLabel").setText(timerString());
+ 			View.findDrawableById("TimerLabel").setText(timerString(false));
  		}
     }
 
@@ -233,14 +233,14 @@ class TimerDelegate extends STBehaviorDelegate {
 	}
 
 	function onBack() {
-		if(!timerView.sync()) {
+		if(!timerView.sync(false)) {
 			Ui.popView(Ui.SLIDE_DOWN);
 		}
 		return true;
 	}
 
 	function onNextPage() {
-		return timerView.sync();
+		return timerView.sync(false);
 	}
 
 	function onPreviousPage() {

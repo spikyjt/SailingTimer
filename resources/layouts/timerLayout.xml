@@ -4,7 +4,7 @@
 		y="0"
 		color="Gfx.COLOR_WHITE"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
-		font="Gfx.FONT_NUMBER_MILD"
+		font="Gfx.FONT_SMALL"
 		id="TimeLabel"
 	/>
     <label
