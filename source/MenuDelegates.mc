@@ -3,18 +3,28 @@ using Toybox.System as Sys;
 using Toybox.Time as Time;
 
 class TimerOptionsDelegate extends Ui.MenuInputDelegate {
-    function onMenuItem(item) {
-        if(item == :timer_option_standard) {
-        	mode = MODE_STANDARD;
+
+	function initialize() {
+		MenuInputDelegate.initialize();
+	}
+
+	function onMenuItem(item) {
+		if(item == :timer_option_standard) {
+			mode = MODE_STANDARD;
 		} else if(item == :timer_option_pursuit) {
 			mode = MODE_PURSUIT;
 			Ui.popView(Ui.SLIDE_LEFT);
 			Ui.pushView(new Rez.Menus.PursuitOptions(), new PursuitOptionsDelegate(), Ui.SLIDE_LEFT);
-        }
-    }
+		}
+	}
+
 }
 
 class PursuitOptionsDelegate extends Ui.MenuInputDelegate {
+
+	function initialize() {
+		MenuInputDelegate.initialize();
+	}
 
 	hidden var offsets = {
 		:pursuit_option_30 => 30,
@@ -35,10 +45,17 @@ class PursuitOptionsDelegate extends Ui.MenuInputDelegate {
 			pursuitOffset = offsets[item];
 		}
 	}
+
 }
 
 class PursuitTimeDelegate extends Ui.NumberPickerDelegate {
-    function onNumberPicked(value) {
-        pursuitOffset = value.value();
-    }
+
+	function initialize() {
+		NumberPickerDelegate.initialize();
+	}
+	
+	function onNumberPicked(value) {
+		pursuitOffset = value.value();
+	}
+
 }

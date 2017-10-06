@@ -215,6 +215,10 @@ class TimerView extends BaseView {
 
 class STBehaviorDelegate extends Ui.BehaviorDelegate {
 
+	function initialize() {
+		BehaviorDelegate.initialize();
+	}
+
 	function onKey(evt) {
 		if (evt.getKey() == Ui.KEY_ENTER) {
 			return onEnter();
@@ -226,6 +230,10 @@ class STBehaviorDelegate extends Ui.BehaviorDelegate {
 }
 
 class TimerDelegate extends STBehaviorDelegate {
+
+	function initialize() {
+		STBehaviorDelegate.initialize();
+	}
 
 	function onEnter() {
 		timerView.stopStart();

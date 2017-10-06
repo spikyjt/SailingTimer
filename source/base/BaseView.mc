@@ -13,6 +13,8 @@ class BaseView extends Ui.View {
 	const FORMAT_MIN_SEC = "%02d";
 
 	function initialize() {
+		View.initialize();
+
 		if(is24Hour == null || isRound == null) {
 			var devSettings = Sys.getDeviceSettings();
 			if(is24Hour == null) {
@@ -23,25 +25,24 @@ class BaseView extends Ui.View {
 				isRound = devSettings.screenShape == Sys.SCREEN_SHAPE_ROUND;
 			}
 		}
-
 	}
 
 	// Update the view
 	function onUpdate(dc) {
-     	// Get and show the current time
-        var clockTime = Sys.getClockTime();
-        var timeData = new [3];
-        timeData[0] = clockTime.hour;
-        timeData[1] = clockTime.min.format(FORMAT_MIN_SEC);
-        timeData[2] = "";
-        if(!is24Hour) {
-        	timeData[0] = clockTime.hour == 0 ? 12 : clockTime.hour % 12;
-        	timeData[2] = clockTime.hour < 12 ? "AM" : "PM";
-        }
-        var timeString = Lang.format(FORMAT_TIME, timeData);
-        View.findDrawableById("TimeLabel").setText(timeString);
-    	// call the parent to update the display
-    	View.onUpdate(dc);
+	 	// Get and show the current time
+		var clockTime = Sys.getClockTime();
+		var timeData = new [3];
+		timeData[0] = clockTime.hour;
+		timeData[1] = clockTime.min.format(FORMAT_MIN_SEC);
+		timeData[2] = "";
+		if(!is24Hour) {
+			timeData[0] = clockTime.hour == 0 ? 12 : clockTime.hour % 12;
+			timeData[2] = clockTime.hour < 12 ? "AM" : "PM";
+		}
+		var timeString = Lang.format(FORMAT_TIME, timeData);
+		View.findDrawableById("TimeLabel").setText(timeString);
+		// call the parent to update the display
+		View.onUpdate(dc);
 	}
 
 }
