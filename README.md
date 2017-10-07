@@ -1,6 +1,6 @@
 # Sailing Timer
 
-### A sailing race start timer for the Garmin Connect IQ platform, following the ISAF 5-4-1-0 sequence
+### A sailing race start timer for the Garmin Connect IQ platform, following the World Sailing 5-4-1-0 sequence
 
 Every minute emits a beep and vibrates.
 
@@ -23,7 +23,7 @@ Only tested on real hardware on the Fênix 3 as that's the device I own. Other d
 
 Licence MIT
 
-Copyright (c) 2015 JT <spikyjt@gmail.com>
+Copyright (c) 2015-2017 JT <spikyjt@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
