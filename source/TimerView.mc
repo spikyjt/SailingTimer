@@ -175,7 +175,7 @@ class TimerView extends BaseView {
 				timer.stop();
 				started = false;
 				var minutes = (seconds / 60).toNumber();
-				if(inc) {
+				if(inc && minutes < 5) {
 					minutes++;
 				}
 				seconds = minutes * 60;
