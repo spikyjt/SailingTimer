@@ -7,20 +7,20 @@
 		font="Gfx.FONT_SMALL"
 		id="TimeLabel"
 	/>
-    <label
+	<label
 		x="center"
 		y="25"
-    	color="Gfx.COLOR_WHITE"
+		color="Gfx.COLOR_WHITE"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_HOT"
-    	id="TimerLabel"
+		id="TimerLabel"
 	/>
 	<label
 		x="center"
 		y="80"
-    	color="Gfx.COLOR_WHITE"
+		color="Gfx.COLOR_WHITE"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_THAI_HOT"
-    	id="OffsetTimerLabel"
+		id="OffsetTimerLabel"
 	/>
 </layout>

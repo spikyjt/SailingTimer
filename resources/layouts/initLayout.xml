@@ -14,7 +14,7 @@
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_HOT"
 		color="Gfx.COLOR_WHITE"
-		text="5:00"
+		text="@Strings.TimerLabel"
 	/>
 	<label
 		id="StartLabel"
@@ -23,7 +23,7 @@
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_MEDIUM"
 		color="Gfx.COLOR_GREEN"
-		text="PRESS START"
+		text="@Strings.StartLabel"
 	/>
 	<label
 		id="OffsetTimerLabel"
@@ -32,7 +32,7 @@
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_HOT"
 		color="Gfx.COLOR_WHITE"
-		text="5:00"
+		text="@Strings.OffsetTimerLabel"
 	/>
 	<label
 		id="ModeLabel"
@@ -40,7 +40,7 @@
 		y="180"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_SMALL"
-    	color="Gfx.COLOR_BLUE"
-		text="Standard"
+		color="Gfx.COLOR_BLUE"
+		text="@Strings.ModeLabel_standard"
 	/>
 </layout>

@@ -26,11 +26,11 @@ class InitView extends BaseView {
 		var modeLabel = View.findDrawableById("ModeLabel");
 		var offsetLabel = View.findDrawableById("OffsetTimerLabel");
 		if(mode == MODE_PURSUIT) {
-			modeLabel.setText("Pursuit");
+			modeLabel.setText(Rez.Strings.ModeLabel_pursuit);
 			modeLabel.setColor(Gfx.COLOR_RED);
 			offsetLabel.setText(timerView.timerString(true));
 		} else {
-			modeLabel.setText("Standard");
+			modeLabel.setText(Rez.Strings.ModeLabel_standard);
 			modeLabel.setColor(Gfx.COLOR_BLUE);
 			offsetLabel.setText("");
 		}
@@ -51,7 +51,7 @@ class InitView extends BaseView {
 	function goPursuit() {
 		var modeLabel = View.findDrawableById("ModeLabel");
 		var offsetLabel = View.findDrawableById("OffsetTimerLabel");
-		modeLabel.setText("Pursuit");
+		modeLabel.setText(Rez.Strings.ModeLabel_pursuit);
 		modeLabel.setColor(Gfx.COLOR_RED);
 		offsetLabel.setText(timerView.timerString(true));
 		Ui.requestUpdate();

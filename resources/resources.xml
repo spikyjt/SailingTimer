@@ -1,22 +1,45 @@
 <resources>
-    <string id="AppName">Sailing Timer</string>
+	<strings>
+		<string id="AppName">Sailing Timer</string>
 
-    <bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
-    
-    <menu id="TimerOptions" title="Choose Mode">
-    	<menu-item id="timer_option_standard">Standard</menu-item>
-    	<menu-item id="timer_option_pursuit">Pursuit...</menu-item>
+		<string id="TimerOptions_title">Choose Mode</string>
+		<string id="TimerOption_standard">Standard</string>
+		<string id="TimerOption_pursuit">Pursuit...</string>
+		
+		<string id="PursuitOptions_title">Choose Start</string>
+		<string id="PursuitOption_custom">Custom...</string>
+		<string id="PursuitOption_30">0:30</string>
+		<string id="PursuitOption_60">1:00</string>
+		<string id="PursuitOption_90">1:30</string>
+		<string id="PursuitOption_120">2:00</string>
+		<string id="PursuitOption_150">2:30</string>
+		<string id="PursuitOption_180">3:00</string>
+		<string id="PursuitOption_210">3:30</string>
+		<string id="PursuitOption_240">4:00</string>
+
+		<string id="TimerLabel">5:00</string>
+		<string id="StartLabel">PRESS START</string>
+		<string id="OffsetTimerLabel">5:00</string>
+		<string id="ModeLabel_standard">Standard</string>
+		<string id="ModeLabel_pursuit">Pursuit</string>
+	</strings>
+
+	<bitmap id="LauncherIcon" filename="images/launcher_icon.png" />
+
+	<menu id="TimerOptions" title="@Strings.TimerOptions_title">
+		<menu-item id="TimerOption_standard">@Strings.TimerOption_standard</menu-item>
+		<menu-item id="TimerOption_pursuit">@Strings.TimerOption_pursuit</menu-item>
 	</menu>
-    
-    <menu id="PursuitOptions" title="Choose Start">
-    	<menu-item id="pursuit_option_custom">Custom...</menu-item>
-    	<menu-item id="pursuit_option_30">0:30</menu-item>
-    	<menu-item id="pursuit_option_60">1:00</menu-item>
-    	<menu-item id="pursuit_option_90">1:30</menu-item>
-    	<menu-item id="pursuit_option_120">2:00</menu-item>
-    	<menu-item id="pursuit_option_150">2:30</menu-item>
-    	<menu-item id="pursuit_option_180">3:00</menu-item>
-    	<menu-item id="pursuit_option_210">3:30</menu-item>
-    	<menu-item id="pursuit_option_240">4:00</menu-item>
+
+	<menu id="PursuitOptions" title="@Strings.PursuitOptions_title">
+		<menu-item id="PursuitOption_custom">@Strings.PursuitOption_custom</menu-item>
+		<menu-item id="PursuitOption_30">@Strings.PursuitOption_30</menu-item>
+		<menu-item id="PursuitOption_60">@Strings.PursuitOption_60</menu-item>
+		<menu-item id="PursuitOption_90">@Strings.PursuitOption_90</menu-item>
+		<menu-item id="PursuitOption_120">@Strings.PursuitOption_120</menu-item>
+		<menu-item id="PursuitOption_150">@Strings.PursuitOption_150</menu-item>
+		<menu-item id="PursuitOption_180">@Strings.PursuitOption_180</menu-item>
+		<menu-item id="PursuitOption_210">@Strings.PursuitOption_210</menu-item>
+		<menu-item id="PursuitOption_240">@Strings.PursuitOption_240</menu-item>
 	</menu>
 </resources>

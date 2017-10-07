@@ -9,7 +9,7 @@ class BaseView extends Ui.View {
 
 	const FORMAT_TIME = "$1$:$2$$3$";
 	const FORMAT_UP_TIME = "$1$:$2$:$3$";
-    const FORMAT_TIMER = "$1$:$2$";
+	const FORMAT_TIMER = "$1$:$2$";
 	const FORMAT_MIN_SEC = "%02d";
 
 	function initialize() {

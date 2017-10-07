@@ -7,12 +7,12 @@
 		font="Gfx.FONT_SMALL"
 		id="TimeLabel"
 	/>
-    <label
+	<label
 		x="center"
 		y="center"
-    	color="Gfx.COLOR_WHITE"
+		color="Gfx.COLOR_WHITE"
 		justification="Gfx.TEXT_JUSTIFY_CENTER"
 		font="Gfx.FONT_NUMBER_THAI_HOT"
-    	id="TimerLabel"
+		id="TimerLabel"
 	/>
 </layout>
