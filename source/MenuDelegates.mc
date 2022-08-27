@@ -56,6 +56,7 @@ class PursuitTimeDelegate extends Ui.NumberPickerDelegate {
 	
 	function onNumberPicked(value) {
 		pursuitOffset = value.value();
+		return true;
 	}
 
 }

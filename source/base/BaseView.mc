@@ -40,7 +40,8 @@ class BaseView extends Ui.View {
 			timeData[2] = clockTime.hour < 12 ? "AM" : "PM";
 		}
 		var timeString = Lang.format(FORMAT_TIME, timeData);
-		View.findDrawableById("TimeLabel").setText(timeString);
+		var view = View.findDrawableById("TimeLabel") as Ui.Text;
+		view.setText(timeString);
 		// call the parent to update the display
 		View.onUpdate(dc);
 	}

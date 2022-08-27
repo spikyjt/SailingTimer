@@ -54,7 +54,8 @@ class TimerView extends BaseView {
 		center[1] = (dc.getHeight() - dc.getFontHeight(Gfx.FONT_NUMBER_THAI_HOT)) / 2;
 		if(mode == MODE_PURSUIT) {
 			setLayout(Rez.Layouts.OffsetTimerLayout(dc));
-			View.findDrawableById("TimerLabel").setColor(Gfx.COLOR_BLUE);
+			var view = View.findDrawableById("TimerLabel") as Ui.Text;
+			view.setColor(Gfx.COLOR_BLUE);
 		} else {
 			setLayout(Rez.Layouts.TimerLayout(dc));
 		}
@@ -119,7 +120,8 @@ class TimerView extends BaseView {
 			if(mode == MODE_PURSUIT) {
 				inOffset = true;
 				View.findDrawableById("OffsetTimerLabel").setLocation(center[0], center[1]);
-				View.findDrawableById("TimerLabel").setText("");
+				var view = View.findDrawableById("TimerLabel") as Ui.Text;
+				view.setText("");
 			} else {
 				up = true;
 			}
@@ -137,13 +139,15 @@ class TimerView extends BaseView {
 	}
 
 	function timerDisplay() {
+		var timerLabel = View.findDrawableById("TimerLabel") as Ui.Text;
+		var offsetTimerLabel = View.findDrawableById("OffsetTimerLabel") as Ui.Text;
  		if(mode == MODE_PURSUIT) {
  			if(!up && seconds >= 0) {
- 				View.findDrawableById("TimerLabel").setText(timerString(false));
+				timerLabel.setText(timerString(false));
  			}
- 			View.findDrawableById("OffsetTimerLabel").setText(timerString(!up));
+ 			offsetTimerLabel.setText(timerString(!up));
  		} else {
- 			View.findDrawableById("TimerLabel").setText(timerString(false));
+ 			timerLabel.setText(timerString(false));
  		}
 	}
 
@@ -217,6 +221,10 @@ class STBehaviorDelegate extends Ui.BehaviorDelegate {
 
 	function initialize() {
 		BehaviorDelegate.initialize();
+	}
+
+	function onEnter() {
+		return true;
 	}
 
 	function onKey(evt) {
