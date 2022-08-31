@@ -34,7 +34,8 @@ class InitView extends BaseView {
 			modeLabel.setColor(Gfx.COLOR_BLUE);
 			offsetLabel.setText("");
 		}
-		Ui.requestUpdate();
+		//Ui.requestUpdate();
+		Ui.pushView(timerView, new TimerDelegate(), Ui.SLIDE_UP);
 	}
 	
 	function updateTime() as Void {
